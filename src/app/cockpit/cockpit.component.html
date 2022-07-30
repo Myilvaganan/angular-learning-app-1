@@ -3,10 +3,19 @@
     <h4>Add new Servers or blueprints!</h4>
     <hr>
     <label>Server Name</label>
-    <input type="text" class="form-control" [(ngModel)]="newServerName">
+    <!-- two-way binding -->
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerName"> -->
+    <!-- querying by attribute -->
+    <input type="text" class="form-control" #newServerName>
+    <hr>
     <label>Server Content</label>
-    <input type="text" class="form-control" [(ngModel)]="newServerContent">
+    <!-- two-way binding -->
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+    <!-- querying by attribute -->
+    <input type="text" class="form-control" #newServerContent>
     <br>
-    <button class="btn btn-success" (click)="onAddServer()">Add Server</button><span style="margin: 1.2rem"></span>
-    <button class="btn btn-primary" (click)="onAddBlueprint()">Add Server Blueprint</button>
+    <button class="btn btn-success" (click)="onAddServer(newServerName,newServerContent)">Add Server</button><span
+      style="margin: 1.2rem"></span>
+    <button class="btn btn-primary" (click)="onAddBlueprint(newServerName,newServerContent)">Add Server
+      Blueprint</button>
   </div>

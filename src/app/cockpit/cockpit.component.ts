@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter,Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -6,30 +6,31 @@ import { Component, OnInit, EventEmitter,Output } from '@angular/core';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-  newServerName = '';
-  newServerContent = '';
-  @Output('srCreated') serverCreated = new EventEmitter<{serverName: string,serverContent: string}>();
-  @Output('blCreated') bluePrintCreated = new EventEmitter<{serverName: string,serverContent: string}>();;
+  // newServerName = '';
+  // newServerContent = '';
+  
+  @Output('srCreated') serverCreated = new EventEmitter<{ serverName: string, serverContent: string }>();
+  @Output('blCreated') bluePrintCreated = new EventEmitter<{ serverName: string, serverContent: string }>();;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onAddServer() {
-    if (this.newServerName) {
-        this.serverCreated.emit({
-      serverName: this.newServerName,
-      serverContent: this.newServerContent
-    })
+  onAddServer(newServerName: HTMLInputElement, newServerContent: HTMLInputElement) {
+    if (newServerName.value) {
+      this.serverCreated.emit({
+        serverName: newServerName.value,
+        serverContent: newServerContent.value
+      })
     }
   }
 
-  onAddBlueprint() {
-    if (this.newServerName) {
+  onAddBlueprint(newServerName: HTMLInputElement, newServerContent: HTMLInputElement) {
+    if (newServerName.value) {
       this.bluePrintCreated.emit({
-        serverName: this.newServerName,
-        serverContent: this.newServerContent
+        serverName: newServerName.value,
+        serverContent: newServerContent.value
       })
     }
   }
